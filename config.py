@@ -1,5 +1,5 @@
 import os
-SECRET_KEY = os.urandom(32)
+SECRET_KEY = os.environ.get("SECRET")
 # Grabs the folder where the script runs.
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -10,5 +10,8 @@ DEBUG = True
 
 
 # TODO IMPLEMENT DATABASE URL
-# SQLALCHEMY_DATABASE_URI = 'postgres://postgres@localhost:5432/fyyur'
-SQLALCHEMY_DATABASE_URI = 'postgresql://:5433/fyyur'
+# Local:
+# SQLALCHEMY_DATABASE_URI = 'postgres://postgres@localhost:5433/fyyur'
+
+# Production:
+SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL") 
